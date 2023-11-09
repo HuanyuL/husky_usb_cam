@@ -1,0 +1,15 @@
+<launch>
+  <group ns="camera_front">
+    <node name="usb_cam1" pkg="usb_cam" type="usb_cam_node" output="screen">
+      <rosparam command="load" file="$(find usb_cam)/config/usb_cam_front.yml" />
+      <remap from="image" to="/camera_front/image_raw"/>
+    </node>
+  </group>
+
+  <group ns="camera_back">
+    <node name="usb_cam2" pkg="usb_cam" type="usb_cam_node" output="screen">
+      <rosparam command="load" file="$(find usb_cam)/config/usb_cam_back.yml" />
+      <remap from="image" to="/camera_back/image_raw"/>
+    </node>
+  </group>
+</launch>
