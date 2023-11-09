@@ -28,9 +28,9 @@ camera_name: head_camera            # ROS internal name for the camera, used to 
 camera_frame_id: head_camera        # Frame ID used to generate coordinate transformations
 camera_transport_suffix: image_raw  # Suffix used by image_transport to generate topic names
 camera_info_url: ""                 # URI for camera calibration data (likely a YML file obtained from camera_calibration)
-image_width: 640                    # Frame dimensions, should be supported by camera hardware
-image_height: 480
-framerate: 30                       # Camera polling frequency, Hz (integer)
+image_width: 320                    # Frame dimensions, should be supported by camera hardware
+image_height: 240
+framerate: 10                       # Camera polling frequency, Hz (integer)
 
 # Auxiliary camera parameters provided by libv4l2.
     # Names for these parameters are generated automatically according to the intrinsic control names exported by the
@@ -41,26 +41,26 @@ framerate: 30                       # Camera polling frequency, Hz (integer)
     # It is also possible to have a list of the available control names using v4l2-ctl application from v4l2-util package:
     # v4l2-ctl --device=/dev/video<ID> -L
 intrinsic_controls:                 
-    focus_auto: true
-    exposure_auto_priority: true
-    exposure_auto: 3
-    white_balance_temperature_auto: true
+    focus_automatic_continuous: true
+    auto_exposure: 3
+    white_balance_automatic: true
     power_line_frequency: 1
     ignore: [
         brightness,
+        exposure_auto_priority,
         contrast,
         saturation,
         gain,
         sharpness,
         backlight_compensation,
         white_balance_temperature,
-        exposure_absolute,
+        exposure_time_absolute,
         pan_absolute,
         tilt_absolute,
         focus_absolute,
-        zoom_absolute
+        zoom_absolute,
+        camera_controls
     ]                               # Use this list to enumerate the control names that should be delisted from the camera setup
                                     # NOTE: the ROS parameters for the V4L controls supported but listed here would be STILL
                                     # generated, but the values WILL NOT BE USED to set up the camera. To affect these controls
                                     # once you want to do that, their names should me REMOVED from this list!
-
