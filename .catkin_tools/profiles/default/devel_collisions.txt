@@ -1,1 +1,0 @@
-/home/huanyu/iaac/husky_usb_cam/devel/./cmake.lock 1
