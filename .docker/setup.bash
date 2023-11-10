@@ -4,8 +4,8 @@
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
 source "/dev_ws/devel/setup.bash"
 
-export ROS_IP=$(hostname -I | awk '{print $1}')
-export ROS_HOSTNAME=$(hostname -I | awk '{print $1}')
+export ROS_IP=$(hostname -I | awk '{print $2}')
+export ROS_HOSTNAME=$(hostname -I | awk '{print $2}')
 
 sudo chmod 777 /dev/video0
 sudo chmod 777 /dev/video2
